@@ -1,88 +1,59 @@
-# Installation Guide
+# Xord — Installation / Instalasi
 
-## Windows x64
+[README Bahasa Indonesia](README.md) · [English README](README.en.md)
 
-TA Builder is distributed as a signed MSIX inside a ZIP bundle.
+## Versi yang didukung / Supported release
 
-### Manual installation
+**Xord stable v1.1.3 — Windows 10/11 x64.** UI v1.2.0 is still under development and is not the public stable installer.
 
-1. Open the latest release:
-   https://github.com/zyxel-lyn/TA-Builder/releases/latest
+Rilis lama dapat mempertahankan **nama paket dan identitas installer historis**. Hal tersebut tidak mengubah nama produk Xord maupun berkas proyek yang sudah dibuat.
 
-2. Download:
-   - `TA-Builder-v1.1.3-Windows-x64.zip`
-   - `SHA256SUMS.txt`
+## Instalasi manual / Manual installation
 
-3. Verify the ZIP:
+1. Buka / Open [Latest release](https://github.com/zyxel-lyn/Xord/releases/latest).
+2. Unduh arsip Windows x64 dan file `SHA256SUMS.txt` dari rilis yang sama. / Download the Windows x64 archive and matching checksum manifest.
+3. Verifikasi SHA-256 / Verify the archive:
 
 ```powershell
-Get-FileHash .\TA-Builder-v1.1.3-Windows-x64.zip -Algorithm SHA256
+.\scripts\Verify-Xord.ps1 -ZipPath ".\downloaded-Windows-x64.zip" -ChecksumsPath ".\SHA256SUMS.txt"
 ```
 
-Expected SHA-256 for v1.1.3:
+Ganti path ZIP dengan nama berkas sesungguhnya. / Use the archive's actual file name.
 
-```text
-D3D1C1D70F947F0207F728082BF760AB1FB89B5300B4D7F4ECA672A94BA5896F
-```
+4. Ekstrak arsip. / Extract the archive.
+5. Jalankan PowerShell sebagai Administrator di folder hasil ekstraksi. / Run elevated PowerShell in the extracted folder.
+6. Jalankan **skrip instalasi yang disertakan dalam paket rilis**. / Run the installation script shipped inside the archive. Historic packages may retain their original installer filename.
+7. Buka aplikasi dari Start Menu. / Launch the installed app from the Start Menu.
 
-4. Extract the ZIP.
+## Instalasi otomatis / Installer helper
 
-5. Open PowerShell as Administrator inside the extracted directory.
-
-6. Run:
+Review the helper script before running it. Administrator privileges are required for MSIX certificate trust.
 
 ```powershell
 Set-ExecutionPolicy -Scope Process Bypass
-.\Install-PA-Builder.ps1
+.\scripts\Install-Xord.ps1
 ```
 
-7. Open **PA Builder** from the Start Menu.
+The helper resolves the latest release on `zyxel-lyn/Xord`, downloads the Windows x64 archive plus `SHA256SUMS.txt`, verifies SHA-256, extracts the package into an isolated temporary folder, then launches its bundled installer. Temporary downloads are cleaned up **only after successful installation**. Use `-KeepDownloads` to retain files after success.
 
-## Helper installation
+**Important:** The new helper has passed PowerShell syntax and local checksum/tamper tests. The complete release-install and certificate-trust flow has **not yet been revalidated end-to-end on a second machine**. A successful cryptographic check does not establish that every MSIX package is trusted by Windows.
 
-From this repository:
+## Uninstall / Hapus aplikasi
 
-```powershell
-Set-ExecutionPolicy -Scope Process Bypass
-.\scripts\Install-TA-Builder.ps1
-```
-
-The helper:
-
-1. resolves the latest GitHub Release;
-2. downloads the Windows x64 ZIP and checksum manifest;
-3. validates SHA-256;
-4. extracts the bundle;
-5. launches the bundled installer.
-
-## Uninstall
-
-Use the `Uninstall-PA-Builder.ps1` script bundled with the release, or uninstall **PA Builder** from Windows Settings.
-
-## Trust model
-
-The MSIX is signed with the TA/PA Builder peer-release certificate.
-
-The public certificate is included in the release bundle. The installer adds that certificate to Windows TrustedPeople before installing the MSIX.
-
-The private signing key is never included in the public release.
+Use Windows **Settings → Installed apps** for the existing installation. The app's display name in older releases may reflect its release-time identity. Avoid deleting user project files when uninstalling.
 
 ## Troubleshooting
 
-### PowerShell blocks the script
+**PowerShell policy:** Use `Set-ExecutionPolicy -Scope Process Bypass` in the current PowerShell process; this does not permanently alter system policy.
 
-Use a process-only execution policy:
+**Certificate warning:** Use the installer bundled with the verified release in an elevated PowerShell window. The installer handles the public signing certificate trust step.
 
-```powershell
-Set-ExecutionPolicy -Scope Process Bypass
-```
+**Installation failure:** Keep the output and report a reproducible issue without uploading passwords, private project documents, certificates with private keys, or account secrets.
 
-This does not permanently change the machine-wide policy.
+**Existing projects:** A product rename must not overwrite, reset or silently migrate the user's existing local project files. The project-file compatibility contract remains in effect.
 
-### Windows reports an untrusted package
+## Safety
 
-Run the bundled installer as Administrator instead of opening the MSIX directly. The installer handles the public certificate trust step.
+Do not use third-party mirrors or replace MSIX DLLs from untrusted download websites. Download from the official GitHub Releases page and verify the matching manifest.
 
-### Existing installation
-
-A newer compatible MSIX can update an existing installation using the same package identity.
+[Security policy](SECURITY.md) · [Report a problem](https://github.com/zyxel-lyn/Xord/issues)
