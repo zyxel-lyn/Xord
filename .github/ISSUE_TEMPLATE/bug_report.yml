@@ -1,5 +1,5 @@
 name: Bug report
-description: Report a reproducible TA Builder problem
+description: Report a reproducible Xord issue
 title: "[Bug] "
 labels:
   - bug
@@ -7,78 +7,71 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for reporting a reproducible problem. Do not attach private academic documents, credentials, tokens, or signing material.
-
+        Thanks for reporting a Xord issue. Do not attach personal academic documents, student IDs, tokens, or signing material.
+        Terima kasih telah melaporkan masalah Xord. Jangan unggah dokumen pribadi atau kredensial.
   - type: input
     id: version
     attributes:
-      label: TA Builder version
-      description: Example: v1.1.0
-      placeholder: v1.1.0
+      label: Xord version / Versi
+      placeholder: v1.1.3
     validations:
       required: true
-
   - type: input
-    id: windows
+    id: os
     attributes:
       label: Windows version
       placeholder: Windows 11 24H2 x64
     validations:
       required: true
-
   - type: dropdown
     id: area
     attributes:
-      label: Area
+      label: Affected area
       options:
-        - Project open/save
-        - Document editor
-        - BAB / structure
-        - Preview
+        - Create / open project
+        - Structured document editor
+        - Academic structure / chapters
+        - References and citations
+        - Review and validation
+        - A4 preview
         - DOCX export
         - PDF export
-        - Install / update
-        - Recovery / versions
+        - Installation and updates
+        - Recovery and revision history
         - Other
     validations:
       required: true
-
   - type: textarea
     id: steps
     attributes:
-      label: Steps to reproduce
-      description: Provide the smallest reproducible sequence.
+      label: Steps to reproduce / Langkah reproduksi
       placeholder: |
         1. Open ...
         2. Select ...
         3. Click ...
     validations:
       required: true
-
   - type: textarea
     id: expected
     attributes:
       label: Expected behavior
     validations:
       required: true
-
   - type: textarea
     id: actual
     attributes:
       label: Actual behavior
     validations:
       required: true
-
   - type: textarea
     id: evidence
     attributes:
-      label: Screenshots or logs
-      description: Remove names, NPM/NIP, private document content, paths, tokens, and other sensitive information before posting.
-
+      label: Screenshots or logs (redacted)
+      description: Remove private project contents, real student IDs, user names, credentials, and sensitive paths before sharing.
   - type: checkboxes
-    id: checks
+    id: privacy
     attributes:
-      label: Safety check
+      label: Privacy and safety
       options:
-        - label: I removed private documents, credentials, tokens, and personal/sensitive information from this report.
+        - label: I removed personal data, private documents and credentials from this report.
           required: true
