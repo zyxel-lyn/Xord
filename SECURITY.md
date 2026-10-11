@@ -1,36 +1,37 @@
-# Security Policy
+# Xord — Security Policy
 
-## Supported release
+[Bahasa Indonesia](README.md) · [English](README.en.md)
 
-The latest stable GitHub Release is the supported public distribution.
+## Supported version / Versi yang didukung
 
-Current stable line:
+The current public stable distribution is **Xord v1.1.3 (Windows x64)**. UI v1.2.0 remains in development; do not treat preview builds as a supported public release.
 
-- TA Builder v1.1.0
-- Windows x64
+## Private vulnerability reporting / Pelaporan kerentanan
 
-## Reporting a security issue
+Do not include passwords, API tokens, certificates containing private keys, personal academic documents, exploit payloads, or unredacted logs in a public issue.
 
-Do **not** publish credentials, private signing material, personal academic documents, access tokens, or exploit details in a public issue.
+Jika menemukan kerentanan, gunakan **private vulnerability reporting** pada GitHub jika tersedia. Jika belum tersedia, buat issue singkat dengan kategori dan dampaknya **tanpa detail eksploitasi atau data sensitif**, lalu minta jalur komunikasi privat.
 
-If you believe you found a security-sensitive problem:
+If you discover a security issue, use GitHub's private vulnerability reporting when available. Otherwise submit only a minimal, non-sensitive issue requesting a private disclosure channel.
 
-1. Open a minimal issue titled `[Security] Private report requested`.
-2. Describe only the affected component and impact category.
-3. Do not include secrets, private documents, proof-of-concept payloads, or sensitive logs.
-4. A private contact path can then be established.
+## Release integrity / Integritas rilis
 
-## Release integrity
-
-Public releases provide:
-
-- a signed MSIX package;
-- a public certificate;
+Official releases should provide:
+- the Windows x64 release bundle;
+- the public signing certificate when MSIX trust setup requires it;
 - `SHA256SUMS.txt`;
-- a release ZIP whose digest is displayed on the GitHub Release.
+- release notes.
 
-Private signing keys are not distributed.
+Verify the downloaded ZIP with [Verify-Xord.ps1](scripts/Verify-Xord.ps1) and its corresponding manifest. **Private signing keys must never be included in a public release or a public issue.**
 
-## Scope
+## Data privacy / Privasi data
 
-This repository is a public distribution/support surface. The production source repository and private build/signing environment are intentionally separate.
+Xord manages academic project files locally. Do not publish project files containing student data, citations with private attachments, supervisors' contact details, or other sensitive information without authorization.
+
+## Repository scope
+
+This repository currently serves **public distribution, documentation and support**. Full internal development source and private signing/build infrastructure are not automatically published to this public repository.
+
+## Responsible disclosure
+
+Avoid performing destructive tests on other people's machines, uploading private data, or sharing a proof of concept publicly before a confidential reporting route is established.
