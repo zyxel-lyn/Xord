@@ -1,165 +1,103 @@
-# TA Builder
+# Xord
 
-> A focused Windows desktop workspace for writing **Proposal Proyek Akhir** through **Final Report** with structured academic documents, consistent preview, and export-ready DOCX/PDF.
+**Ruang kerja desktop untuk penulisan akademik yang terstruktur.**  
+**by Xellen17**
 
-[![Latest Release](https://img.shields.io/github/v/release/zyxel-lyn/TA-Builder?display_name=tag&sort=semver)](https://github.com/zyxel-lyn/TA-Builder/releases/latest)
-[![Windows x64](https://img.shields.io/badge/platform-Windows%20x64-0078D4?logo=windows)](https://github.com/zyxel-lyn/TA-Builder/releases/latest)
-[![Release](https://img.shields.io/badge/channel-stable-2ea44f)](https://github.com/zyxel-lyn/TA-Builder/releases)
-[![Download](https://img.shields.io/badge/download-latest%20release-blue)](https://github.com/zyxel-lyn/TA-Builder/releases/latest)
+**Bahasa:** Bahasa Indonesia · [English](README.en.md)
 
----
+[![Rilis stabil](https://img.shields.io/github/v/release/zyxel-lyn/Xord?display_name=tag&sort=semver)](https://github.com/zyxel-lyn/Xord/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-Windows%20x64-555555)](INSTALL.md)
+[![Status](https://img.shields.io/badge/rilis-stabil-2f855a)](https://github.com/zyxel-lyn/Xord/releases)
 
-## What is TA Builder?
+## Tentang Xord
 
-TA Builder membantu mahasiswa menyusun dokumen akademik secara terstruktur tanpa harus menjaga format secara manual dari halaman ke halaman.
+Xord membantu mahasiswa menyusun **Proposal Proyek Akhir** hingga **Laporan Proyek Akhir** dalam satu proyek lokal. Penulisan tetap berfokus pada substansi, sementara struktur akademik, pratinjau, pemeriksaan, dan proses ekspor dikelola dalam satu aplikasi.
 
-Fokus utama aplikasi:
+Xord dikembangkan dengan kebutuhan D3 Manajemen Informatika FMIPA Universitas Syiah Kuala sebagai baseline akademik. Implementasi format khusus mengikuti profil akademik yang tersedia; aplikasi tidak otomatis menjamin kesesuaian dengan setiap pedoman perguruan tinggi.
 
-- Proposal Proyek Akhir sampai Final Report dalam satu project.
-- BAB, subbab, subsubbab, dan lampiran yang fleksibel.
-- Preview A4 yang konsisten dengan hasil export.
-- Export DOCX dan PDF dari sumber dokumen yang sama.
-- Project lokal dengan file `.pa-project`.
-- Versioning, recovery, integrity checks, dan review gate.
-- Lembar Pengesahan dapat diaktifkan/nonaktifkan sesuai kebutuhan dokumen.
-- Format Cover, Pengesahan, dan Kata Pengantar yang terkontrol.
+## Fitur utama
 
-## Latest release
+- **Dokumen terstruktur:** BAB, subbab, sub-subbab, lampiran, cover, dan halaman awal.
+- **Editor akademik:** pengelolaan paragraf, sitasi, gambar, tabel, dan persamaan.
+- **Referensi & evidence:** impor bibliografi, penelusuran PDF sumber, catatan evidence, serta pelacakan sitasi.
+- **Review & validasi:** pemeriksaan akademik dengan lokasi isu dan pembatas ekspor jika ada masalah kritis.
+- **Pratinjau A4:** menggunakan jalur produksi yang terkait dengan dokumen keluaran.
+- **Ekspor:** **DOCX dan PDF**; paket ZIP disediakan hanya untuk alur akademik yang memang membutuhkannya.
+- **Proyek lokal:** berkas proyek tunggal, autosave, histori revisi, pemulihan, dan pemeriksaan integritas.
+- **Workflow akademik:** kelanjutan proposal hingga laporan akhir tanpa membuat proyek terpisah.
 
-### TA Builder v1.1.3
+> **Batasan:** Xord tidak menyediakan ekspor HTML. HTML/WebView2 dapat digunakan secara internal oleh editor, tetapi bukan format keluaran pengguna.
 
-**Windows x64**
+## Status proyek
 
-[Download TA-Builder-v1.1.3-Windows-x64.zip](https://github.com/zyxel-lyn/TA-Builder/releases/download/v1.1.3/TA-Builder-v1.1.3-Windows-x64.zip)
+| Jalur | Status |
+| --- | --- |
+| Rilis aplikasi untuk Windows x64 | **v1.1.3 — stabil** |
+| Pembaruan antarmuka Xord v1.2.0 | **Dalam pengembangan dan pengujian** |
+| Platform lain | Belum menjadi distribusi resmi |
+| Hosting/cloud | Tidak diperlukan untuk penggunaan lokal |
 
-SHA-256:
+**UI v1.2.0 belum diumumkan sebagai rilis stabil.** Jangan menyamakan preview pekerjaan pengembangan dengan paket rilis pada halaman **Releases**.
 
-```text
-D3D1C1D70F947F0207F728082BF760AB1FB89B5300B4D7F4ECA672A94BA5896F
-```
+## Mengunduh dan memasang
 
-Release page:
+1. Buka [Releases terbaru](https://github.com/zyxel-lyn/Xord/releases/latest).
+2. Unduh paket Windows x64 dan file **`SHA256SUMS.txt`** pada rilis yang sama.
+3. Verifikasi SHA-256 paket sebelum mengekstraknya.
+4. Ekstrak paket, kemudian ikuti petunjuk instalasi yang disertakan. Paket MSIX tertentu memerlukan pemasangan sertifikat publik menggunakan PowerShell dengan izin Administrator.
+5. Buka aplikasi dari Start Menu.
 
-https://github.com/zyxel-lyn/TA-Builder/releases/tag/v1.1.3
+Beberapa paket rilis historis masih memakai nama berkas atau identitas installer dari sebelum perubahan merek. Nama tersebut merupakan bagian dari artefak rilis yang sudah diterbitkan, bukan nama produk saat ini.
 
-## Installation
+**[Panduan instalasi lengkap](INSTALL.md)** · **[Kebijakan keamanan](SECURITY.md)**
 
-### Recommended
+### Instalasi dengan helper
 
-1. Download the latest Windows x64 ZIP from **Releases**.
-2. Extract the ZIP.
-3. Right-click PowerShell and run as **Administrator**.
-4. Run:
-
-```powershell
-Set-ExecutionPolicy -Scope Process Bypass
-.\Install-PA-Builder.ps1
-```
-
-5. Open **PA Builder** from the Windows Start Menu.
-
-The distributed bundle contains:
-
-- signed MSIX package;
-- public signing certificate;
-- installer/uninstaller scripts;
-- sample project;
-- checksum manifest;
-- release notes;
-- recovery guide.
-
-The bundle does **not** contain the private signing key.
-
-For detailed instructions, see [INSTALL.md](INSTALL.md).
-
-## Quick install helper
-
-This repository also provides a small helper that downloads the latest public release, verifies the SHA-256 checksum, extracts it, and launches the bundled installer.
+Setelah mengunduh repository atau file helper-nya, jalankan PowerShell sebagai Administrator:
 
 ```powershell
 Set-ExecutionPolicy -Scope Process Bypass
-.\scripts\Install-TA-Builder.ps1
+.\scripts\Install-Xord.ps1
 ```
 
-Review the script before running it if you prefer to audit every installation step.
+Helper akan mengambil rilis stabil terbaru, memverifikasi checksum, lalu menjalankan installer yang ada di paket. Untuk memeriksa ZIP secara manual:
 
-## v1.1.3 highlights
+```powershell
+.\scripts\Verify-Xord.ps1 -ZipPath ".\paket-Windows-x64.zip" -ChecksumsPath ".\SHA256SUMS.txt"
+```
 
-- Kata Pengantar closing block now keeps exactly one full blank line between the Banda Aceh/date line and the student name.
-- Student name underline and NPM line remain unchanged.
-- The spacing contract is identical in DOCX and PDF/Preview.
-- Fresh Microsoft Word runtime validation confirmed two line breaks after the location/date, producing one visual blank line.
-- PDF layout extraction independently confirmed: date line → empty line → student name → NPM.
-- v1.1.2 canonical front-matter order, Daftar Isi, Daftar Gambar, and Daftar Tabel behavior remain intact.
-- `.pa-project` schema, ProjectId semantics, academic workflow, and package identity remain compatible.
+Ganti path ZIP dengan nama file yang benar-benar diunduh. Periksa isi skrip sebelum menjalankannya jika Anda menginginkan instalasi yang sepenuhnya diaudit.
 
-## Product flow
+## Alur penggunaan
 
 ```mermaid
 flowchart LR
-    A[Create / Open .pa-project] --> B[Structured Document Workspace]
-    B --> C[Review & Validation]
-    C --> D[A4 Preview]
-    C --> E[DOCX Export]
-    C --> F[PDF Export]
-    B --> G[Versions & Recovery]
+    A["Buat / Buka Proyek"] --> B["Susun Dokumen"]
+    B --> C["Kelola Referensi & Objek"]
+    C --> D["Review & Validasi"]
+    D --> E["Pratinjau A4"]
+    E --> F["Ekspor DOCX / PDF"]
+    B --> G["Simpan & Pulihkan Revisi"]
     G --> B
 ```
 
-## Repository model
+## Berkas proyek dan privasi
 
-This is the **public distribution and support repository**.
+Xord dirancang **local-first**. Dokumen proyek, lampiran dan metadata akademik dikelola di perangkat pengguna. Jangan mengunggah berkas proyek berisi data pribadi ke issue publik.
 
-The production source repository is not published here. This repository intentionally contains only public-facing documentation, issue templates, release tooling, checksum helpers, and downloadable release artifacts.
+Berkas proyek dari rilis terdahulu tetap memerlukan dukungan kompatibilitas; perubahan merek tidak boleh digunakan sebagai alasan untuk menghapus data, identitas proyek, atau histori revisi.
 
-That separation keeps the public download surface small while preventing internal build/signing material from being exposed.
+## Tentang repository ini
 
-## Verify a download
+Repository **`zyxel-lyn/Xord`** saat ini merupakan tempat **distribusi rilis, dokumentasi, laporan masalah dan panduan penggunaan publik**. Source pengembangan penuh, material penandatanganan privat, dan proses build internal **tidak termasuk** dalam distribusi publik saat ini.
 
-Download both:
+## Bantuan dan kontribusi
 
-- `TA-Builder-v1.1.3-Windows-x64.zip`
-- `SHA256SUMS.txt`
+Jika menemukan masalah, gunakan [GitHub Issues](https://github.com/zyxel-lyn/Xord/issues) dengan versi aplikasi, versi Windows, langkah reproduksi, hasil yang diharapkan, dan hasil yang terjadi. Hapus nama, nomor identitas, isi dokumen pribadi dan kredensial sebelum mengunggah tangkapan layar/log.
 
-Then run:
-
-```powershell
-.\scripts\Verify-TA-Builder.ps1 \
-  -ZipPath .\TA-Builder-v1.1.3-Windows-x64.zip \
-  -ChecksumsPath .\SHA256SUMS.txt
-```
-
-Expected result:
-
-```text
-VERIFY=PASS
-```
-
-## Requirements
-
-- Windows 10/11 x64
-- Administrator access for MSIX certificate trust/install
-- PowerShell 5.1 or newer
-
-## Issues
-
-Found a bug? Open an issue and include:
-
-- TA Builder version;
-- Windows version;
-- steps to reproduce;
-- expected behavior;
-- actual behavior;
-- screenshots/logs when safe to share.
-
-Use the repository issue template so reports remain reproducible.
-
-## Security
-
-Do not publish passwords, tokens, signing keys, private documents, or personally sensitive project files in issues.
-
-See [SECURITY.md](SECURITY.md).
+Untuk masalah keamanan, baca [SECURITY.md](SECURITY.md).
 
 ---
 
-**TA Builder** — structured academic writing, local-first.
+**Xord — structured academic writing, local-first.**  
+by Xellen17
